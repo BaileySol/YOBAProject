@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
-  startSpeechRecognition();
+  // startSpeechRecognition();
+  startSpeechRecognitionLoop();
   const video = document.getElementById("video");
   
   
@@ -23,7 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const utterance = new SpeechSynthesisUtterance(msg);
     utterance.lang = "en-US";
     speechSynthesis.speak(utterance);
-    startSpeechRecognition();
   }
 
 function startCountdown(event) {
@@ -114,5 +114,47 @@ function startSpeechRecognition() {
 
   recognition.start();
 }
+
+
+function startSpeechRecognitionLoop() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript.trim().toLowerCase();
+    console.log("👂 Recognized speech:", transcript);
+
+    if (transcript === "yes") {
+      document.getElementById("message").innerText = "You said YES — capturing image!";
+      startCountdown(); // מצלמים
+    } else {
+      document.getElementById("message").innerText = `You said: "${transcript}". Say "yes" to capture.`;
+    }
+
+    // להתחיל מחדש
+    // recognition.start();
+  };
+
+  recognition.onerror = function(event) {
+    console.error("❌ Speech recognition error:", event.error);
+    document.getElementById("message").innerText = `Error: ${event.error}`;
+
+    // ניסיון מחדש אחרי שגיאה קלה
+    if (event.error !== "not-allowed") {
+      setTimeout(() => recognition.start(), 1000);
+    }
+  };
+
+  recognition.onend = function() {
+    // ממשיכים להאזין ברצף גם אם הסתיים
+    console.log("🔁 Recognition ended, restarting...");
+    recognition.start();
+  };
+
+  recognition.start(); // התחלה ראשונית
+}
+
 
 
