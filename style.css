@@ -1,0 +1,116 @@
+/* בסיס עיצוב כללי */
+body {
+  margin: 0;
+  background: #f0f4f8;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* מכולת האתר - חלוקה לשני צדדים */
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffffdd;
+  font-family: Arial, sans-serif;
+}
+
+/* שני הצלעות - שמאל וימין */
+.left, .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+}
+
+/* רקע בצד שמאל (מצלמה) */
+.left {
+  background: #e0f7fa;
+}
+
+/* רקע בצד ימין (טקסט וכפתורים) */
+.right {
+  background: #fce4ec;
+  text-align: center;
+}
+
+/* עיצוב הוידאו והקנבס - מעלים אותם במיקום מוחלט */
+video, canvas {
+  width: 640px;
+  height: 480px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transform: scaleX(-1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+
+canvas {
+  z-index: 2;
+}
+
+video {
+  z-index: 1;
+}
+
+/* כותרות */
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #444;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* הודעות למשתמש */
+.message {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #6a1b9a;
+  background: #fff0f5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* כפתורים */
+button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background: #ba68c8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+button:hover {
+  background: #9c27b0;
+}
+
+/* הטיימר - מעל הוידאו בצד שמאל */
+.timer-overlay {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 64px;
+  font-weight: bold;
+  color: #9383e9;
+  z-index: 3;
+  pointer-events: none;
+  display: none;
+  font-family: 'Segoe UI', sans-serif;
+}
