@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Yoga Pose</title>
+  <style>
+    /* General page layout */
+    body {
+      margin: 0;
+      background: #f0f4f8;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      background: #ffffffdd;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #444;
+    }
+
+    .pose-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .pose-button {
+      width: 150px;
+      height: 150px;
+      background: #ba68c8;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .pose-button:hover {
+      background: #9c27b0;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Select a Yoga Pose</h1>
+    <div class="pose-buttons">
+      <button class="pose-button" onclick="selectPose('tree')">TREE</button>
+      <button class="pose-button" onclick="selectPose('warrior')">WARRIOR</button>
+      <button class="pose-button" onclick="selectPose('tadasana')">TADASANA</button>
+    </div>
+  </div>
+
+  <script>
+    function selectPose(poseName) {
+      // Navigate to camera.html and pass the pose as a query parameter
+      window.location.href = `camera.html?pose=${poseName}`;
+    }
+  </script>
+</body>
+</html>
