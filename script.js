@@ -1,4 +1,4 @@
-// Init: מחכה לטעינת תוכן הדף ואז מאתחל את כל המרכיבים
+// Init: Waits for the page content to load and then initializes all components
 window.addEventListener("DOMContentLoaded", initPage);
 
 function initPage() {
@@ -8,13 +8,13 @@ function initPage() {
   initializeCamera();
 }
 
-// מחלץ מה-URL את הפרמטר pose
+// Extracts the pose parameter from the URL
 function getPoseFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get('pose');
 }
 
-// מאתחל את המצלמה ומציג את הזרם בווידאו
+// Initializes the camera and displays the video stream
 function initializeCamera() {
   const videoElement = document.getElementById("video");
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -31,7 +31,7 @@ function initializeCamera() {
   }
 }
 
-// שולח בקשה לשרת לקבלת הוראות לתנוחה
+// Sends a request to the server for pose instructions
 function fetchPoseInstructions(poseName) {
   fetch(`http://localhost:5000/instructions/${poseName}`)
     .then(res => res.json())
@@ -49,13 +49,13 @@ function fetchPoseInstructions(poseName) {
     });
 }
 
-// מעדכן את אלמנט ההודעה בטקסט הנתון
+// Updates the message element with the given text
 function updateMessage(message) {
   const messageElement = document.getElementById("message");
   messageElement.innerText = message;
 }
 
-// מפעיל את ההקראה של רשימת הוראות אחת אחרי השנייה
+// Starts reading a list of instructions one after the other
 function speakInstructions(instructions) {
   let currentInstructionIndex = 0;
 
@@ -74,7 +74,7 @@ function speakInstructions(instructions) {
   speakNextInstruction();
 }
 
-// יוצר מופע של SpeechSynthesisUtterance עם פרמטרים מוגדרים
+// Creates an instance of SpeechSynthesisUtterance with defined parameters
 function createUtterance(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "en-US";
@@ -84,7 +84,7 @@ function createUtterance(text) {
   return utterance;
 }
 
-// מפעיל לולאת זיהוי דיבור שמאזינה באופן רציף
+// Starts a speech recognition loop that listens continuously
 function startSpeechRecognitionLoop() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = 'en-US';
@@ -115,7 +115,7 @@ function startSpeechRecognitionLoop() {
   recognition.start();
 }
 
-// מפעיל טיימר של 3 שניות ולבסוף מצלם תמונה
+// Starts a 3 second timer and finally takes a picture
 function initiateCountdown(event) {
   if (event) event.preventDefault();
 
@@ -137,7 +137,7 @@ function initiateCountdown(event) {
   }, 1000);
 }
 
-// לוכד תמונה מהוידאו ושולח אותה לשרת
+// Captures an image from the video and sends it to the server
 function captureAndSendImage() {
   const videoElement = document.getElementById("video");
   const canvas = document.createElement("canvas");
@@ -145,7 +145,7 @@ function captureAndSendImage() {
   canvas.height = videoElement.videoHeight;
   const context = canvas.getContext("2d");
 
-  // מבצע השתקפות אופקית (מראה)
+// Performs horizontal reflection (mirror)
   context.translate(canvas.width, 0);
   context.scale(-1, 1);
   context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
@@ -180,7 +180,7 @@ function speakText() {
 }
 
 
-// ביטול הקראת הסינטזה בעת יציאת המשתמש מהדף
+// Cancel the synthesis reading when the user leaves the page
 window.addEventListener("beforeunload", () => {
   speechSynthesis.cancel();
 });
