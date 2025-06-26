@@ -161,9 +161,10 @@ function captureAndSendImage() {
     .then(data => {
       console.log("Image sent:", data);
       if (data.message) {
-        alert(data.message);
+        const pose = data.pose ? data.pose.toUpperCase() : "UNKNOWN";
+        alert(`Detected pose is ${pose}`);
       } else {
-        alert("No message received from server.");
+        alert("No pose detected.");
       }
     })
     .catch(error => {

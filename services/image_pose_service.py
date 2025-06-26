@@ -2,6 +2,7 @@ import base64
 import cv2
 import numpy as np
 import mediapipe as mp
+from app.pose_analyzer import detect_pose
 
 mp_pose = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
@@ -11,6 +12,7 @@ def is_landmark_valid(lm, margin=0.05):
     Returns True if the landmark is visible and within frame margins.
     """
     return (lm.visibility > 0.5 and margin < lm.x < 1 - margin and margin < lm.y < 1 - margin)
+
 
 def process_uploaded_image(image_base64):
     """
@@ -69,4 +71,10 @@ def process_uploaded_image(image_base64):
         for i, lm in enumerate(landmarks)
     ]
 
-    return {'message': 'Pose detected', 'landmarks': landmarks_data}
+    pose_name = detect_pose(landmarks)
+
+    return {
+    'message': f"Pose detected: {pose_name}" if pose_name else "Pose detected but unrecognized",
+    'pose': pose_name,
+    'landmarks': landmarks_data
+    }
