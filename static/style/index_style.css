@@ -1,0 +1,77 @@
+:root {
+    --magenta-purple: #B03B8D;
+    --dusty-lilac: #C378CB;
+    --vibrant-magenta: #C65FA3;
+    --deep-magenta: #8A2E70;
+    --soft-lilac: #D89EE0;
+    --moody-lavender: #A55DAE;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left-image {
+  flex: 1;
+  background: var(--soft-lilac);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-image {
+  width: 80%;
+  max-width: 500px;
+}
+
+.right-content {
+  flex: 1;
+  background: var(--moody-lavender);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.message {
+  font-size: 18px;
+  color: white;
+  background: var(--vibrant-magenta);
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background: var(--vibrant-magenta);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--deep-magenta);
+}

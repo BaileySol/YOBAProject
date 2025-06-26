@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yoga Practice</title>
+  <link rel="icon" type="image/png" href="images/lotus.png">
+  <link rel="stylesheet" href="style/camera_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-camera">
+          <div class="timer-overlay" id="timer">3</div>
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="right-content">
+          <h1>Yoga Practice with Camera</h1>
+          <div class="message" id="instructions">Say 'yes' to start yoga pose detection.</div>
+          <div class="message" id="message">Let's begin your yoga </div>
+          <button onclick="speakText()">Speak Message 📣</button>
+          <button onclick="initiateCountdown()">Capture Image 📸</button>
+
+        </div>
+      </div>
+      
+  <script src="script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+:root {
+    --magenta-purple: #B03B8D;
+    --dusty-lilac: #C378CB;
+    --vibrant-magenta: #C65FA3;
+    --deep-magenta: #8A2E70;
+    --soft-lilac: #D89EE0;
+    --moody-lavender: #A55DAE;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.left-camera, .right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+}
+
+.left-camera {
+  background: var(--soft-lilac);
+}
+
+.right-content {
+  background: var(--moody-lavender);
+  text-align: center;
+}
+
+video, canvas {
+  width: 640px;
+  height: 480px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transform: translate(-50%, -50%) scaleX(-1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+}
+
+canvas {
+  z-index: 2;
+}
+
+video {
+  z-index: 1;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color:white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.message {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: white;
+  background: var(--vibrant-magenta);
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background: var(--vibrant-magenta);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+button:hover {
+  background: var(--deep-magenta);
+}
+
+.timer-overlay {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 64px;
+  font-weight: bold;
+  background: var(--deep-magenta);
+  z-index: 3;
+  pointer-events: none;
+  display: none;
+  font-family: 'Segoe UI', sans-serif;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Yoga Pose</title>
+  <link rel="icon" type="image/png" href="images/lotus.png">
+  <link rel="stylesheet" href="style/choose_pose_style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Select a Yoga Pose</h1>
+    <div class="pose-buttons">
+      <button class="pose-button" onclick="selectPose('tree')">TREE</button>
+      <button class="pose-button" onclick="selectPose('warrior')">WARRIOR</button>
+      <button class="pose-button" onclick="selectPose('tadasana')">TADASANA</button>
+    </div>
+  </div>
+
+  <script>
+    function selectPose(poseName) {
+      window.location.href = `camera.html?pose=${poseName}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Dictionary of yoga poses with detailed step-by-step spoken instructions
 
-pose_instructions_dict = {
+pose_instructions = {
     "tadasana": [
         "Stand upright with your big toes touching and heels slightly apart. Spread your toes and ground down evenly through both feet.",
         "Engage your thigh muscles by lifting the kneecaps. Draw your lower belly in and up to support your spine.",
@@ -23,3 +23,10 @@ pose_instructions_dict = {
         "Focus your gaze softly on a fixed point in front of you and breathe deeply, finding calmness and stability in the pose."
     ]
 }
+
+def get_instructions(pose_name):
+    """
+    param pose_name: str - The name of the yoga pose **lowercase**
+    return: list or None - A list of instructions for the pose or None if not found
+    """
+    return pose_instructions.get(pose_name.lower())

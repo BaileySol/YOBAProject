@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Yoga</title>
+  <link rel="icon" type="image/png" href="images/lotus.png">
+  <link rel="stylesheet" href="style/index_style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-image">
+      <img src="images/lotus.png" class="main-image" alt="Lotus Pose">
+    </div>
+
+    <div class="right-content">
+      <h1>Welcome to YOBA!</h1>
+      <h2>Your Guided Yoga Journey Begins Here</h2>
+
+      <div class="message">Click below to begin your guided session.</div>
+      <button onclick="startExercise()">Start Exercise 🧘</button>
+    </div>
+  </div>
+
+  <script>
+    function startExercise() {
+      window.location.href = "choose_pose.html";
+    }
+  </script>
+
+</body>
+</html>
